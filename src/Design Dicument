@@ -1,0 +1,54 @@
+Design Document Format
+
+LinearEquation class
+
+Instance Variables:
+private int x - This variable represents the x-coordinate
+private int y - This variable represents the y-coordinate
+private int x2 - This variable represents the second x-coordinate
+private int y2 - This variable represents the second y-coordinate
+private int x3 - This variable represents the x-coordinate that the user wants to check its spot on the function
+
+Constructor
+	public LinearEquation(int x, int y, int x2, int y2)
+
+Methods:
+
+public String toString()
+This method will display all relevant information about this instance including:
+X and Y coordinate information
+Slope Intercept Form equation
+
+public double SlopeCalc()
+This method calculates the slope of the linear equation given the 2 points
+returns double
+will use (y2-y1)/(x2-x1) formula
+
+public double InterceptCalc()
+This method calculates the y intercept of the linear equation given the 2 points and slope
+returns string with the fraction written in the "a/b" format
+
+public double Distance()
+This method calculates the distance between the 2 points using the distance formula
+√[(x2-x1)²+(y2-y1)²]
+returns a double with the information
+
+public double NewX()
+This method calculates the point on the linear function associated with the new x value
+Inputs the x value into the linear equation to find the y value
+returns a double with the y value
+
+EquationRunner.java
+Step 1: Ask user to enter first coordinate point
+Step 2: Ask user to enter second coordinate point
+Step 3: Create a new object using the LinearEquation class
+Step 4: Run each method with the new object to preform the calculations required for the large print statement
+Step 5: Ask user to enter another x value in order to calc the y
+Step 6: print the new coordinate
+
+
+
+
+
+
+
