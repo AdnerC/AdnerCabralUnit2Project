@@ -16,7 +16,7 @@ public class EquationRunner {
         System.out.print("What is your second y value? ");
         String y2String = s.nextLine();
 
-        int indexOf;(xString, ",");
+//        int indexOf;(xString, ",");
 
         int x = Integer.parseInt(xString);
         int x2 = Integer.parseInt(x2String);
