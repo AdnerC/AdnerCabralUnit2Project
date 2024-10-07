@@ -6,12 +6,14 @@ public class LinearEquation {
     private int y2;
     private int x3;
 
+
     public LinearEquation(int x, int y, int x2, int y2) {
         this.x = x;
         this.y = y;
         this.x2 = x2;
         this.y2 = y2;
         this.x3 = x3;
+
 
     }
     public LinearEquation(int x, int y, int x2, int y2, int x3) {
@@ -22,8 +24,10 @@ public class LinearEquation {
         this.x3 = x3;
     }
 
+
     public String fractionConversion( double number ){
-        String slope = null;
+        String slope;
+
 
         String numberString = number+"";
         int decPlace = numberString.length() - numberString.indexOf(".")-1;
@@ -34,38 +38,86 @@ public class LinearEquation {
         } else {
             slope = numerator+"/"+denominator;
         }
+        if (slopeCalc()<0) {
+            slope =  numerator+"/"+(denominator);
+
+
+        }
+
+
         return slope;
 
+
     }
+
+
 
 
     public double slopeCalc() {
         double slope = ((double) y2 - y) / ((double) x2 - x);
 
+
         return slope;
     }
 
+
     public double interceptCalc() {
         double b = y - slopeCalc()*x;
+        if (b<0){
+            return (-1*b);
+        }
         return b;
     }
+
 
     public double distance() {
         double distance = Math.sqrt(Math.pow(x2 - x, 2) + Math.pow((y2 - y), 2)); // dividing the total amount by the amount of p
         return distance;
     }
 
-    public double newX() {
+
+    public double newX()
+    {
         return (slopeCalc() * x3) + interceptCalc();
     }
 
     public String toString() {
         DecimalFormat df = new DecimalFormat("#.##"); // used to round future numbers/variables
+        if (slopeCalc()==1) {
+            String info = "First pair: " +"("+x+", "+y+")" + "\n"+"Second pair: " +"("+x2+", "+y2+")"+"\n"+"Slope of line : "+fractionConversion(slopeCalc())+"\n"+"Y-Intercept: "+interceptCalc()+"\n"+"Slope intercept form: y = "+" x + "+interceptCalc()+"\n"+"Distance between points: "+ df.format(distance());
+            return info;
 
 
+        }
+        if (slopeCalc()==-1) {
+            String info = "First pair: " + "(" + x + ", " + y + ")" + "\n" + "Second pair: " + "(" + x2 + ", " + y2 + ")" + "\n" + "Slope of line : " + fractionConversion(slopeCalc()) + "\n" + "Y-Intercept: " + interceptCalc() + "\n" + "Slope intercept form: y = " + " -x + " + interceptCalc() + "\n" + "Distance between points: " + df.format(distance());
+            return info;
+
+
+        }
+        if (interceptCalc()==0) {
+            String info = "First pair: " + "(" + x + ", " + y + ")" + "\n" + "Second pair: " + "(" + x2 + ", " + y2 + ")" + "\n" + "Slope of line : " + fractionConversion(slopeCalc()) + "\n" + "Y-Intercept: " + interceptCalc() + "\n" + "Slope intercept form: y = " + slopeCalc() + "x"  + "\n" + "Distance between points: " + df.format(distance());
+            return info;
+
+
+        }
+        if (slopeCalc()==0 && interceptCalc()==0){
+            String info = "First pair: " + "(" + x + ", " + y + ")" + "\n" + "Second pair: " + "(" + x2 + ", " + y2 + ")" + "\n" + "Slope of line : " + fractionConversion(slopeCalc()) + "\n" + "Y-Intercept: " + interceptCalc() + "\n" + "Slope intercept form: y = 0" + "\n" + "Distance between points: " + df.format(distance());
+            return info;
+
+
+        }
+        if (interceptCalc()<0) {
+            String info = "First pair: " + "(" + x + ", " + y + ")" + "\n" + "Second pair: " + "(" + x2 + ", " + y2 + ")" + "\n" + "Slope of line : " + fractionConversion(slopeCalc()) + "\n" + "Y-Intercept: " + interceptCalc() + "\n" + "Slope intercept form: y = " + fractionConversion(slopeCalc()) + "x - " + interceptCalc() + "\n" + "Distance between points: " + df.format(distance());
+            return info;
+        }
         String info = "First pair: " +"("+x+", "+y+")" + "\n"+"Second pair: " +"("+x2+", "+y2+")"+"\n"+"Slope of line : "+fractionConversion(slopeCalc())+"\n"+"Y-Intercept: "+interceptCalc()+"\n"+"Slope intercept form: y = "+fractionConversion(slopeCalc())+"x + "+interceptCalc()+"\n"+"Distance between points: "+ df.format(distance());
         return info;
     }
+    public String test() {
 
 
+        String test = "Slope before fraction conversion: " + slopeCalc()+"\n"+"Formatted slope: " + fractionConversion(slopeCalc());
+        return test;
+    }
 }
