@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+
 public class LinearEquation {
     private int x;
     private int y;
@@ -13,7 +14,6 @@ public class LinearEquation {
         this.x2 = x2;
         this.y2 = y2;
         this.x3 = x3;
-
 
     }
     // Constructor for when there is x3
@@ -80,40 +80,52 @@ public class LinearEquation {
 
     public String toString() {// returns a string with all the wanted information
 
-        DecimalFormat df = new DecimalFormat("#.##"); // used to round future numbers/variables
-        String firstPair = "First pair: " +"("+x+", "+y+")";
-        String secondPair = "Second pair: " +"("+x2+", "+y2+")";
-        String slope = "Slope of line : "+fractionConversion(slopeCalc());
-        String intercept = "Y-Intercept: "+interceptCalc();
-        String equation ="Slope intercept form: y = "+fractionConversion(slopeCalc())+"x + "+interceptCalc();
-        String distance = "Distance between points: "+ df.format(distance());
+      DecimalFormat df = new DecimalFormat("#.##"); // used to round future numbers/variables
 
-        String slopeData = fractionConversion(slopeCalc());
-        String interceptData = interceptCalc()+"";
-        String distanceData = "Distance between points: "+ df.format(distance());
+        // Initialize first strings
+        String firstPair = "First pair: (" + x + ", " + y + ")";
+        String secondPair = "Second pair: (" + x2 + ", " + y2 + ")";
+        double slopeValue = slopeCalc();
+        double interceptValue = interceptCalc();
 
-        if (slopeCalc()==1) {
-            slopeData ="";
+        // Format the fractions
+        String slopeData = fractionConversion(slopeValue);
+        String interceptData; // Declare the variable
+
+        if (interceptValue == 0) {
+            interceptData = ""; // Assign an empty string if interceptValue is 0
+        } else {
+            interceptData = df.format(interceptValue); // Format if not 0
         }
-        if (slopeCalc()==-1) {
-            slopeData ="";
-        }
-        if (interceptCalc()==0) {
-            interceptData = "";
-            equation ="Slope intercept form: y = "+fractionConversion(slopeCalc())+"x";
-        }
-        if (slopeCalc()==0){
+
+        String distanceData = "Distance between points: " + df.format(distance());
+
+        if (slopeValue == 1) {
             slopeData = "";
         }
-        if (slopeCalc()==0 && interceptCalc()==0){
-            equation ="Slope intercept form: y = "+fractionConversion(slopeCalc())+"x - "+interceptCalc()*-1;
+        if (slopeValue == -1) {
+            slopeData = "-";
         }
-        if (interceptCalc()<0) { // if the intercept is negative, make it positive and simply subtract
-            equation ="Slope intercept form: y = "+fractionConversion(slopeCalc())+"x";
+        if (slopeValue == 0) {
+            slopeData = "";
         }
-        String finalEquation = equation;
-        String info = "First pair: " +"("+x+", "+y+")" + "\n"+"Second pair: " +"("+x2+", "+y2+")"+"\n"+"Slope of line : "+fractionConversion(slopeCalc())+"\n"+"Y-Intercept: "+interceptCalc()+"\n"+"Slope intercept form: y = "+fractionConversion(slopeCalc())+"x + "+interceptCalc()+"\n"+"Distance between points: "+ df.format(distance());
+
+        String equation;
+        if (interceptValue > 0) {
+            equation = "Slope intercept form: y = " + slopeData + "x + " + interceptData;
+        } else if (interceptValue < 0) {
+            equation = "Slope intercept form: y = " + slopeData + "x - " + df.format(-interceptValue);
+        } else { // intercept == 0
+            equation = "Slope intercept form: y = " + slopeData + "x";
+        }
+
+        if (Integer.parseInt(slopeData) == 0 ){
+            slopeData ="1";
+        }
+
+        String info = firstPair + "\n" + secondPair + "\n" + "Slope of line: " + slopeData + "\n" + "Y-Intercept: " + df.format(interceptValue) + "\n" + equation + "\n" + distanceData;
         return info;
+
     }
 
 }
