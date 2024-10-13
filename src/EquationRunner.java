@@ -19,10 +19,10 @@ public class EquationRunner {
         String x2S = secondString.substring(1, index2);//separating the x and y values for the second pair
         String y2S = secondString.substring(index2+2, secondString.length()-1);
 
-        int x1 = Integer.parseInt(x1S);// converting each variable to a string
-        int y1 = Integer.parseInt(y1S);
-        int x2 = Integer.parseInt(x2S);
-        int y2 = Integer.parseInt(y2S);
+        double x1 = Double.parseDouble(x1S);// converting each variable to a string
+        double y1 = Double.parseDouble(y1S);
+        double x2 = Double.parseDouble(x2S);
+        double y2 = Double.parseDouble(y2S);
 
         LinearEquation firstEquation = new LinearEquation(x1,y1,x2,y2); // creating object
 
@@ -31,10 +31,9 @@ public class EquationRunner {
 
         System.out.print("What is your new x value? ");// now asking for the new x value
         String newXString = s.nextLine();
-        int newX = Integer.parseInt(newXString);
+        double newX = Double.parseDouble(newXString);
         LinearEquation secondEquation = new LinearEquation(x1,y1,x2,y2, newX);// creating a new object with the newX variable now
         double newY = secondEquation.newX();
         System.out.println("Calculated point: ("+newX+","+newY+")");
-
     }
 }
