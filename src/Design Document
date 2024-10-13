@@ -3,15 +3,15 @@ Design Document Format
 LinearEquation class
 
 Instance Variables:
-private int x - This variable represents the x-coordinate
-private int y - This variable represents the y-coordinate
-private int x2 - This variable represents the second x-coordinate
-private int y2 - This variable represents the second y-coordinate
-private int x3 - This variable represents the x-coordinate that the user wants to check its spot on the function
+private double x - This variable represents the x-coordinate
+private double y - This variable represents the y-coordinate
+private double x2 - This variable represents the second x-coordinate
+private double y2 - This variable represents the second y-coordinate
+private double x3 - This variable represents the x-coordinate that the user wants to check its spot on the function
 
 Constructor
-	public LinearEquation(int x, int y, int x2, int y2)
-	public LinearEquation(int x, int y, int x2, int y2, int x3)
+	public LinearEquation(double x, double y, double x2, double y2)
+	public LinearEquation(double x, double y, double x2, double y2, double x3)
 
 Methods:
 
@@ -48,10 +48,11 @@ returns a double with the y value
 EquationRunner.java
 Step 1: Ask user to enter first coordinate point
 Step 2: Ask user to enter second coordinate point
-Step 3: Create a new object using the LinearEquation class
-Step 4: Run each method with the new object to preform the calculations required for the large print statement
-Step 5: Ask user to enter another x value in order to calc the y
-Step 6: print the new coordinate
+Step 3: Convert all string numbers to double
+Step 4: Create a new object using the LinearEquation class
+Step 5: Run each method with the new object to preform the calculations required for the large print statement
+Step 6: Ask user to enter another x value in order to calc the y
+Step 7: print the new coordinate
 
 
 
