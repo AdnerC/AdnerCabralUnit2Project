@@ -1,14 +1,14 @@
 import java.text.DecimalFormat;
 
 public class LinearEquation {
-    private int x;
-    private int y;
-    private int x2;
-    private int y2;
-    private int x3;
+    private double x;
+    private double y;
+    private double x2;
+    private double y2;
+    private double x3;
 
 
-    public LinearEquation(int x, int y, int x2, int y2) {    // Constructor for when there is no x3
+    public LinearEquation(double x, double y, double x2, double y2) {    // Constructor for when there is no x3
 
         this.x = x;
         this.y = y;
@@ -18,7 +18,7 @@ public class LinearEquation {
     }
 
 
-    public LinearEquation(int x, int y, int x2, int y2, int x3) {    // Constructor for when there is x3
+    public LinearEquation(double x, double y, double x2, double y2, double x3) {    // Constructor for when there is x3
 
         this.x = x;
         this.y = y;
@@ -52,8 +52,7 @@ public class LinearEquation {
 
 
     public double slopeCalc() { //calculates slope
-        double slope = ((double) y2 - y) / ((double) x2 - x);
-
+        double slope = ( y2 - y) / ( x2 - x);
         return slope;
     }
 
@@ -79,7 +78,7 @@ public class LinearEquation {
 
     public String toString() {// returns a string with all the wanted information
 
-      DecimalFormat df = new DecimalFormat("#.##"); // used to round future numbers/variables
+        DecimalFormat df = new DecimalFormat("#.##"); // used to round future numbers/variables
 
         // Initialize first strings
         String firstPair = "First pair: (" + x + ", " + y + ")";
