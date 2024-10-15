@@ -1,7 +1,9 @@
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class EquationRunner {
     public static void main(String[] args) {
+        DecimalFormat df = new DecimalFormat("#.##"); // used to round future numbers/variables
         Scanner s = new Scanner(System.in);
 
         System.out.print("What is your first pair? ");// user enters first pair
@@ -34,6 +36,6 @@ public class EquationRunner {
         double newX = Double.parseDouble(newXString);
         LinearEquation secondEquation = new LinearEquation(x1,y1,x2,y2, newX);// creating a new object with the newX variable now
         double newY = secondEquation.newX();
-        System.out.println("Calculated point: ("+newX+","+newY+")");
+        System.out.println("Calculated point: ("+df.format(newX)+","+df.format(newY)+")");
     }
 }
